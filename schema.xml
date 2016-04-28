@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- HackThisSite.org
+     programming challenge 4 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+    <xs:complexType name="LineType">
+        <xs:all>
+            <xs:element ref="XStart"/>
+            <xs:element ref="XEnd"/>
+            <xs:element ref="YStart"/>
+            <xs:element ref="YEnd"/>
+            <xs:element ref="Color" minOccurs="0"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="ArcType">
+        <xs:all>
+            <xs:element ref="XCenter"/>
+            <xs:element ref="YCenter"/>
+            <xs:element ref="Radius"/>
+            <xs:element ref="ArcStart"/>
+            <xs:element ref="ArcExtend"/>
+            <xs:element ref="Color" minOccurs="0"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:element name="XStart" type="xs:double"/>
+    <xs:element name="XEnd" type="xs:double"/>
+    <xs:element name="YStart" type="xs:double"/>
+    <xs:element name="YEnd" type="xs:double"/>
+    <xs:element name="XCenter" type="xs:double"/>
+    <xs:element name="YCenter" type="xs:double"/>
+    <xs:element name="Radius" type="xs:double"/>
+    <xs:element name="ArcStart" type="xs:double"/>
+    <xs:element name="ArcExtend" type="xs:double"/>
+    <xs:element name="Color">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="blue"/>
+                <xs:enumeration value="green"/>
+                <xs:enumeration value="red"/>
+                <xs:enumeration value="yellow"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="ppcPlot">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Line" type="LineType"
+                            minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="Arc" type="ArcType"
+                            minOccurs="0" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
